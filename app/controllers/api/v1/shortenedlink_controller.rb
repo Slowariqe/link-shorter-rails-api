@@ -3,7 +3,6 @@
 module Api
   module V1
     class ShortenedlinkController < ApplicationController
-
       def generate_shorty
         letters = ['a'..'z', 'A'..'Z', '0'..'9'].map(&:to_a).flatten
         shorty = 5.times.map { letters.sample }.join
