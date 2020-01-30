@@ -63,6 +63,8 @@ GEM
     concurrent-ruby (1.1.5)
     crass (1.0.6)
     erubi (1.9.0)
+    faker (2.10.1)
+      i18n (>= 1.6, < 2)
     ffi (1.12.1)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
@@ -123,6 +125,23 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
+    redis (4.1.3)
+    redis-actionpack (5.2.0)
+      actionpack (>= 5, < 7)
+      redis-rack (>= 2.1.0, < 3)
+      redis-store (>= 1.1.0, < 2)
+    redis-activesupport (5.2.0)
+      activesupport (>= 3, < 7)
+      redis-store (>= 1.3, < 2)
+    redis-rack (2.1.1)
+      rack (>= 2.0.8, < 3)
+      redis-store (>= 1.2, < 2)
+    redis-rails (5.0.2)
+      redis-actionpack (>= 5.0, < 6)
+      redis-activesupport (>= 5.0, < 6)
+      redis-store (>= 1.2, < 2)
+    redis-store (1.8.1)
+      redis (>= 4, < 5)
     ruby_dep (1.5.0)
     spring (2.1.0)
     spring-watcher-listen (2.0.1)
@@ -151,9 +170,12 @@ PLATFORMS
 DEPENDENCIES
   bootsnap (>= 1.4.2)
   byebug
+  faker
   listen (>= 3.0.5, < 3.2)
   puma (~> 4.1)
   rails (~> 6.0.2, >= 6.0.2.1)
+  redis-rails
+  redis-store
   spring
   spring-watcher-listen (~> 2.0.0)
   sqlite3 (~> 1.4)
