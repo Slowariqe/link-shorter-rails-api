@@ -3,9 +3,9 @@
 Rails.application.routes.draw do
   namespace 'api' do
     namespace 'v1' do
-      #resources :shortenedlink
-      put  '/shortyl/:id', to: 'shortenedlink#update', id: %r{[^/]+}
-      get  '/shortyl/:id', to: 'shortenedlink#show', id: %r{[^/]+}
+      # resources :shortenedlink
+      put  '/shortyl/*long_url', to: 'shortenedlink#update' # , id: %r{[^/]+}
+      get  '/shortyl/:short_url', to: 'shortenedlink#show'
       post '/shortyl/', to: 'shortenedlink#index'
     end
   end

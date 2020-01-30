@@ -19,7 +19,7 @@ module Api
 
       # show used for return a long link from a code
       def show
-        long_link_answer = Shortenedlink.find_by shortLink: params[:id]
+        long_link_answer = Shortenedlink.find_by shortLink: params[:short_url]
         if !long_link_answer.nil?
           render json: {  status: 'SUCCESS',
                           message: 'Loaded your long link by this code',
@@ -32,16 +32,16 @@ module Api
 
       # update used for generating a short link or returning old one
       def update
-        pp(params[:id])
-        short_link_answer = Shortenedlink.find_by longLink: params[:id]
+        pp(params[:long_url])
+        short_link_answer = Shortenedlink.find_by longLink: params[:long_url]
         if !short_link_answer.nil?
           render json: {  status: 'SUCCESS',
                           message: 'Long link already existed ',
                           data: short_link_answer.shortLink }, status: :ok
         else
-          short_link_answer = Shortenedlink.create(longLink: params[:id].to_s,
+          short_link_answer = Shortenedlink.create(longLink: params[:long_url].to_s,
                                                    shortLink: generate_shorty)
-          render json: {  status: 'SUCCESS',
+          render json: {  status: 'CREATED',
                           message: 'Generated new short link',
                           data: short_link_answer.shortLink }, status: :ok
         end
