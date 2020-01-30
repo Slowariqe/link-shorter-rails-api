@@ -1,3 +1,12 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  namespace 'api' do
+    namespace 'v1' do
+      # resources :shortenedlink
+      put  '/shortyl/*long_url', to: 'shortenedlink#update' # , id: %r{[^/]+}
+      get  '/shortyl/:short_url', to: 'shortenedlink#show'
+      post '/shortyl/', to: 'shortenedlink#index'
+    end
+  end
 end
